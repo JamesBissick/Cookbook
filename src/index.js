@@ -1,11 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import Login from './components/Login'
+import NotFound from './components/NotFound'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+const Root = () => (
+  <Router>
+    <Switch>
+      <Route exact path='/' component={ Login }/>
+      <Route path='/user/:username' component={ App }/>
+      <Route component={ NotFound }/>
+    </Switch>
+  </Router>
+)
+
+ReactDOM.render(<Root/>, document.getElementById('root'))
